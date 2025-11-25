@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rounza</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="max-width:420px; margin-top:48px;">
+        <div style="text-align:center;">
+            <img src="logo.png" alt="Rounza" style="width:96px; height:96px; border-radius:16px; box-shadow:0 6px 28px rgba(99,102,241,0.14); background:#fff; object-fit:cover;">
+            <h1 style="margin-top:12px; color:#3730a3;">Entrar no Rounza</h1>
+            <p style="color:#6b7280;">Faça login para continuar</p>
+        </div>
+
+        <form id="login-form" style="margin-top:18px;">
+            <label for="username">Usuário</label>
+            <input id="username" type="text" required style="width:100%; margin-bottom:12px; padding:8px; border-radius:8px; border:1px solid #e6e9f2;">
+
+            <label for="password">Senha</label>
+            <input id="password" type="password" required style="width:100%; margin-bottom:18px; padding:8px; border-radius:8px; border:1px solid #e6e9f2;">
+
+            <button type="submit" class="btn" style="width:100%;">Entrar</button>
+            <div id="msg" style="margin-top:12px; color:#ef4444;"></div>
+        </form>
+    </div>
+
+    <script>
+        // credenciais simples
+        const VALID_USER = 'rounzadev';
+        const VALID_PASS = 'rounza';
+
+        document.getElementById('login-form').addEventListener('submit', function(e){
+            e.preventDefault();
+            const u = document.getElementById('username').value.trim();
+            const p = document.getElementById('password').value;
+            const msg = document.getElementById('msg');
+            msg.textContent = '';
+            if (u === VALID_USER && p === VALID_PASS){
+                // simulate user data
+                const user = {
+                    username: VALID_USER,
+                    displayName: 'Rounza',
+                    photo: 'usuusu.png',
+                    created: 1,
+                    participated: 1,
+                    months: 3
+                };
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                // redirect to index
+                window.location.href = 'index.html';
+            } else {
+                msg.textContent = 'Usuário ou senha incorretos.';
+            }
+        });
+    </script>
+</body>
+</html>
