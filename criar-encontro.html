@@ -2,6 +2,15 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <script>
+    // bloquear páginas se não estiver logado
+    const user = localStorage.getItem('currentUser');
+    if (!user) {
+        // não logado → manda pro login
+        window.location.href = "login.html";
+    }
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Encontro - Rounza</title>
     <link rel="icon" type="image/png" href="favicon.png">
@@ -28,6 +37,14 @@
             <label for="data">Data:</label>
             <input type="date" id="data" name="data" required style="width:100%;margin-bottom:12px;">
 
+            <label for="horaini">Horário:</label>
+            <input type="time" id="horaini" name="horaini" required style="width:25.50%;margin-bottom:12px;margin-top:6px;">
+
+            <label for="horafim">Até:</label>
+            <input type="time" id="horafim" name="horafim" required style="width:25.50%;margin-bottom:12px;">
+
+            <br>
+
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao" rows="3" required style="width:100%;margin-bottom:16px;"></textarea>
 
@@ -37,5 +54,17 @@
     </div>
     <script src="encontro.js"></script>
     <script src="auth.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const localSelecionado = params.get("local");
+        
+            if (localSelecionado) {
+                const select = document.getElementById("local");
+                select.value = localSelecionado;
+            }
+        });
+        </script>
+        
 </body>
 </html>

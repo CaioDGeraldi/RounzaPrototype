@@ -58,3 +58,11 @@ function renderLocal() {
 }
 
 document.addEventListener('DOMContentLoaded', renderLocal);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createMeetingBtn = document.getElementById('create-meeting-btn');
+    const localTitle = document.getElementById('local-title').textContent.trim();
+
+    // Define o link do botão com o local como parâmetro na URL
+    createMeetingBtn.href = `criar-encontro.html?local=${encodeURIComponent(localTitle)}`;
+});
