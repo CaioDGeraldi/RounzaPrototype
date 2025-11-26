@@ -40,6 +40,8 @@
         btn.style.boxShadow = 'none';
         btn.style.background = 'transparent';
         btn.style.zIndex = '9999';
+        btn.className = 'profile-btn';
+
 
         const img = document.createElement('img');
         img.src = user.photo || 'usuusu.png';

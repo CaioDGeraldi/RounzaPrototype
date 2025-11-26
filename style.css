@@ -82,3 +82,23 @@ button:hover, .btn:hover {
 		font-size: 1em;
 	}
 }
+
+.profile-btn {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  .profile-btn {
+	display: none;
+  }
+}
+
